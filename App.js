@@ -21,12 +21,18 @@ const UserNavigator = createBottomTabNavigator({
   map : { screen : MapScreen},
   deck : {screen : DeckScreen},
   review : {screen : SettingsNavigator}
+}, {
+  lazy: true
 })
 
 const MainNavigator = createBottomTabNavigator({
   welcome : { screen : WelcomeScreen},
   auth : { screen : AuthScreen},
   main : { screen : UserNavigator}
+}, {
+  defaultNavigationOptions : {
+    tabBarVisible : false
+  }
 })
 
 const AppContainer = createAppContainer(MainNavigator);
@@ -41,10 +47,3 @@ export default class App extends Component {
       );
     }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
